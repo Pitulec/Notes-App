@@ -6,7 +6,7 @@ const noteRouter = require("./routes/notes");
 const connection = require("./database");
 const dotenv = require("dotenv");
 
-dotenv.config()
+dotenv.config();
 
 const PORT = 3000;
 
