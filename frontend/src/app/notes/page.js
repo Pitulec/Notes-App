@@ -14,7 +14,6 @@ function NotesPage() {
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           setData(res.data);
         }
@@ -23,7 +22,7 @@ function NotesPage() {
         console.error(err);
       });
   };
-  
+
   useEffect(() => {
     document.title = "Notes App - dashboard";
     fetchData();
