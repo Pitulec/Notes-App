@@ -8,19 +8,22 @@ function NotePage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(`http://localhost:3000/notes/${id}`, {
+  const fetchData = () => {
+    axios
+      .get("http://localhost:3000/notes/${id}", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setData(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
       });
-      if (res.status === 200) {
-        setData(await res.json());
-      }
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const note = data?.[0];
