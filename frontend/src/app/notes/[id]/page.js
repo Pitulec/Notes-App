@@ -2,27 +2,26 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 function NotePage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const router = useRouter();
 
   const fetchData = () => {
     axios
-      .get("http://localhost:3000/notes/${id}", {
+      .get(`http://localhost:3000/notes/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       })
       .then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          setData(res.data);
-        }
+        setData(res.data);
       })
       .catch((err) => {
-        console.error(err);
+        router.push("/notes");
       });
   };
 
