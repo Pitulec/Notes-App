@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import Head from "next/head";
+import axios from "axios";
 import Link from "next/link";
 
 function NotePage() {
