@@ -29,19 +29,24 @@ function NotesPage() {
   }, []);
 
   return (
-    <main className="min-h-scree max-w-4xl mx-auto px-6 py-16">
+    <main className="min-h-screen max-w-4xl mx-auto px-6 py-16">
+      <nav className="inset-0 flex justify-start items-center w-full h-12 pb-4">
+        <Link href="/notes/create" className="p-3 bg-neutral-800 font-bold rounded-xl">
+        Create note
+        </Link>
+      </nav>
       {data && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-5xl mx-auto">
           {data.map((note, id) => (
             <Link
-              href={`/notes/${id + 1}`}
+              href={`/notes/${note.id}`}
               key={id}
               className="rounded-2xl p-6 flex flex-col gap-2 border border-neutral-800 bg-neutral-900 hover:scale-[1.02] transition-transform duration-200"
             >
               <h1 className="text-2xl font-bold mb-2 text-neutral-200">
                 {note.title}
               </h1>
-              <p className="text-neutral-400">{note.content}</p>
+              <p className="text-neutral-400">{note.content.slice(0, 450) + "..."}</p>
             </Link>
           ))}
         </div>
