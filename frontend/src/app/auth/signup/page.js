@@ -1,35 +1,27 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import Link from "next/link";
 
 function RegisterPage() {
   const [error, setError] = useState("");
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const register = async () => {
-    try {
-      setError("")
-      const res = await fetch("http://localhost:3000/auth/signup", {
-        method: "POST",
-        body: JSON.stringify({
-          username, password
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
+  const register = () => {
+    axios
+      .post("http://localhost:3000/auth/signup", {
+        username,
+        password,
       })
-
-      if (res.status === 400 || res.status == 500) {
-        setError((await res.json()).message);
-        return;
-      }
-
-      router.push("/auth/login");
-
-    } catch { }
+      .then((res) => {
+        router.push("/auth/login");
+      })
+      .catch((err) => {
+        setError(err.response.data.message);
+      });
   };
 
   return (
