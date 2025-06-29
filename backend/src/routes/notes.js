@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 // DASHBOARD PO LOGINIE
 notesRouter.get("/", (req, res) => {
+    if (!req.headers.authorization) return res.sendStatus(401)
     const [type, token] = req.headers.authorization?.split(" ");
 
     if (type !== "Bearer") return res.sendStatus(401);

@@ -1,25 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Link from "next/link";
 
 function NotesPage() {
   const [data, setData] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/notes/", {
+  const fetchData = () => {
+    axios
+      .get("http://localhost:3000/notes/", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setData(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
       });
-      if (res.status === 200) {
-        setData(await res.json());
-      }
-    } catch {
-      console.log("Error");
-    }
   };
-
+  
   useEffect(() => {
     document.title = "Notes App - dashboard";
     fetchData();
