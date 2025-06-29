@@ -1,6 +1,5 @@
 # Notes-App
-Strona do robienia notatek, dziala login register i patrzenie notatek.
-DODAĆ TWORZENIEM, USUWANIE I EDYTOWANIE NOTATEK.
+Zrobione API tworzenia usuwania i edycji notatek, dodać część frontendową tego.
 
 BACKEND - "node ."
 FRONTEND - "npm run dev"
