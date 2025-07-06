@@ -77,12 +77,13 @@ authRouter.post("/login", async (req, res) => {
         const username = result[0].username;
 
         const user = {
-            id: id, name: username
-        }
+          id: id,
+          name: username,
+        };
         const token = jwt.sign(user, process.env.ACCESS_TOKEN);
 
         res.status(200).json({
-            token: token
+          token: token,
         });
         return;
       }
