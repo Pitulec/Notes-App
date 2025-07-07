@@ -50,9 +50,7 @@ authRouter.post("/login", async (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
-        res.status(500).json({
-          message: "Server is not responding",
-        });
+        res.status(500);
         return;
       }
       if (result.length == 0) {

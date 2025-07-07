@@ -27,7 +27,7 @@ function SignUpPage() {
         router.push("/auth/login");
       })
       .catch((err) => {
-        setError(err.response.status);
+        setError(err.status);
       });
   };
 
@@ -50,6 +50,17 @@ function SignUpPage() {
               className="mb-4"
             >
               <Alert className="border-red-500/20 bg-red-950/15 text-red-100/80">
+              {error == 500 && (
+                  <>
+                    <AlertCircle className="!text-red-100" />
+                    <AlertTitle className="text-red-100">
+                      Internal Server Error
+                    </AlertTitle>
+                    <AlertDescription className="text-red-200">
+                      <p>Try again later</p>
+                    </AlertDescription>
+                  </>
+                )}
                 {error == 422 && (
                   <>
                     <AlertCircle className="!text-red-100" />
@@ -110,7 +121,7 @@ function SignUpPage() {
           className="bg-neutral-800 border-neutral-600"
         />
         <Button onClick={signup} variant="secondary" className="mt-6">
-          Create your account
+          Signup
         </Button>
         <div className="mt-3 text-center text-sm">
           Already have an account?{" "}
