@@ -9,17 +9,8 @@ authRouter.post("/signup", async (req, res) => {
     password: req.body.password,
   };
 
-  if (data.name.length < 3) {
-    return res.status(400).send({
-      message: "The name must have a minimum of 3 characters",
-    });
-  }
-
-  if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password)) {
-    return res.status(400).send({
-      message: "The password must have a minimum of 8 characters and one digit",
-    });
-  }
+  if (data.name.length < 3 || !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password))
+    return res.sendStatus(422);
 
   connection.query(
     "SELECT * FROM users WHERE username = ?",
@@ -27,9 +18,7 @@ authRouter.post("/signup", async (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
-        res.status(500).json({
-          message: "Server is not responding",
-        });
+        res.sendStatus(500);
         return;
       }
       if (result.length == 0) {
@@ -42,9 +31,7 @@ authRouter.post("/signup", async (req, res) => {
           }
         );
       } else {
-        res.status(400).json({
-          message: "This username is claimed",
-        });
+        res.sendStatus(409);
         return;
       }
     }
