@@ -80,18 +80,12 @@ function LoginPage() {
                     </AlertDescription>
                   </>
                 )}
-                {error == 409 && (
+                {error == 400 && (
                   <>
                     <AlertCircle className="!text-red-100" />
                     <AlertTitle className="text-red-100">
-                      Username already taken
+                      Invalid credentials
                     </AlertTitle>
-                    <AlertDescription className="text-red-200">
-                      <p>
-                        This username is already in use. Please choose a
-                        different one.
-                      </p>
-                    </AlertDescription>
                   </>
                 )}
               </Alert>
