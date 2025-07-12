@@ -4,6 +4,8 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function NotePage() {
   const { id } = useParams();
@@ -59,9 +61,10 @@ function NotePage() {
                 </svg>
               </Link>
             </header>
-            <div className="text-neutral-200 leading-relaxed whitespace-pre-wrap text-lg">
+            <ReactMarkdown
+  remarkPlugins={[remarkGfm]}>
               {note.content}
-            </div>
+            </ReactMarkdown>
           </article>
         )}
       </main>
