@@ -46,7 +46,7 @@ function NotesPage() {
               <h1 className="text-2xl font-bold mb-2 text-neutral-200">
                 {note.title}
               </h1>
-              <p className="text-neutral-400">{note.content.slice(0, 450) + "..."}</p>
+              <p className="text-neutral-400">{note.content.length > 20 ? note.content.slice(0, 20) + "..." : note.content}</p>
             </Link>
           ))}
         </div>

@@ -33,7 +33,7 @@ notesRouter.get("/:id", (req, res) => {
     "SELECT * FROM notes WHERE id = ?",
     [noteId],
     (err, result) => {
-      const note = result[0];
+      const note = result?.[0];
 
       if (!note || note.user_id !== id) res.status(404).send("Note not found");
       else res.status(200).json(result);
