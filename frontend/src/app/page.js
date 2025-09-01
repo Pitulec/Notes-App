@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 
 function RedirectPage() {
   const router = useRouter();
-  
-useEffect(() => {
-    router.push(localStorage.getItem("authToken") === null ? "/auth/login" : "/notes")
-}, [])
+
+  useEffect(() => {
+    router.push(
+      localStorage.getItem("authToken") === null ? "/auth/login" : "/notes",
+    );
+  }, []);
 
   return <></>;
 }

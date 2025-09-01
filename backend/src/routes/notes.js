@@ -17,7 +17,7 @@ notesRouter.get("/", (req, res) => {
     [id],
     (err, result) => {
       res.status(200).json(result);
-    }
+    },
   );
 });
 
@@ -37,7 +37,7 @@ notesRouter.get("/:id", (req, res) => {
 
       if (!note || note.user_id !== id) res.status(404).send("Note not found");
       else res.status(200).json(result);
-    }
+    },
   );
 });
 
@@ -59,7 +59,7 @@ notesRouter.post("/", (req, res) => {
     [data.user_id, data.title, data.content],
     (err, result) => {
       res.status(200).json(result);
-    }
+    },
   );
 
   connection.query(
@@ -67,7 +67,7 @@ notesRouter.post("/", (req, res) => {
     [data.user_id, data.title, data.content],
     (err, result) => {
       res.status(200).json(result);
-    }
+    },
   );
 });
 
@@ -90,7 +90,7 @@ notesRouter.put("/:id", (req, res) => {
     [data.user_id, data.title, data.content, noteId],
     (err, result) => {
       res.status(200).json(result);
-    }
+    },
   );
 });
 
@@ -107,7 +107,7 @@ notesRouter.delete("/:id", (req, res) => {
     [noteId, id],
     (err, result) => {
       res.status(200).json(result);
-    }
+    },
   );
 });
 

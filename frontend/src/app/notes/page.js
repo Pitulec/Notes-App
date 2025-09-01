@@ -31,8 +31,11 @@ function NotesPage() {
   return (
     <main className="min-h-screen max-w-4xl mx-auto px-6 py-16">
       <nav className="inset-0 flex justify-start items-center w-full h-12 pb-4">
-        <Link href="/notes/create" className="p-3 bg-neutral-800 font-bold rounded-xl">
-        Create note
+        <Link
+          href="/notes/create"
+          className="p-3 bg-neutral-800 font-bold rounded-xl"
+        >
+          Create note
         </Link>
       </nav>
       {data && (
@@ -46,7 +49,11 @@ function NotesPage() {
               <h1 className="text-2xl font-bold mb-2 text-neutral-200">
                 {note.title}
               </h1>
-              <p className="text-neutral-400">{note.content.length > 20 ? note.content.slice(0, 20) + "..." : note.content}</p>
+              <p className="text-neutral-400">
+                {note.content.length > 20
+                  ? note.content.slice(0, 20) + "..."
+                  : note.content}
+              </p>
             </Link>
           ))}
         </div>

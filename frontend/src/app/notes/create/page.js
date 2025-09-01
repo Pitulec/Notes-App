@@ -23,7 +23,7 @@ function CreatePage() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
-        }
+        },
       )
       .then((res) => {
         router.push("/notes/");
