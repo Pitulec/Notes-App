@@ -33,7 +33,7 @@ function SignUpPage() {
     return (
         <div className="flex justify-center items-center h-screen w-screen">
             <div className="flex flex-col bg-neutral-900 border-1 border-neutral-800 p-6 rounded-xl w-sm">
-                {error && (<>
+                {error && (
                     <Alert variant="destructive" className="mb-3">
                         <AlertCircleIcon/>
                         {error == 500 && (<>
@@ -57,15 +57,10 @@ function SignUpPage() {
                             </AlertDescription>
                         </>)}
                     </Alert>
-                </>)}
-
+                )}
                 <h1 className="text-md font-bold">Create your account</h1>
-                <p className="text-sm text-neutral-400 ">
-                    Enter your username below to create your account
-                </p>
-                <Label htmlFor="username" className="mt-4 mb-2.5">
-                    Username
-                </Label>
+                <p className="text-sm text-neutral-400 ">Enter your username below to create your account</p>
+                <Label htmlFor="username" className="mt-4 mb-2.5">Username</Label>
                 <Input
                     id="username"
                     type="username"
@@ -74,9 +69,7 @@ function SignUpPage() {
                     onChange={(e) => setUsername(e.target.value)}
                     className="bg-neutral-800 border-neutral-600"
                 />
-                <Label htmlFor="password" className="mt-4 mb-2.5">
-                    Password
-                </Label>
+                <Label htmlFor="password" className="mt-4 mb-2.5">Password</Label>
                 <Input
                     id="password"
                     type="password"
@@ -84,14 +77,10 @@ function SignUpPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="bg-neutral-800 border-neutral-600"
                 />
-                <Button onClick={signup} variant="secondary" className="mt-6">
-                    Signup
-                </Button>
+                <Button onClick={signup} variant="secondary" className="mt-6">Signup</Button>
                 <div className="mt-3 text-center text-sm">
                     Already have an account?{" "}
-                    <Link href="/auth/login" className="underline underline-offset-4">
-                        Log in
-                    </Link>
+                    <Link href="/auth/login" className="underline underline-offset-4">Log in</Link>
                 </div>
             </div>
         </div>
