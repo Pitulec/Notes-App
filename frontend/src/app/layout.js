@@ -6,7 +6,7 @@ function RootLayout({ children }) {
       <head>
         <title>Notes App</title>
       </head>
-      <body className="bg-neutral-950 text-neutral-50">{children}</body>
+      <body className="dark bg-neutral-950 text-neutral-50">{children}</body>
     </html>
   );
 }
