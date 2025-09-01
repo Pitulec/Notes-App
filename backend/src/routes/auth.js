@@ -3,6 +3,7 @@ const authRouter = express.Router();
 const connection = require("../database");
 const jwt = require("jsonwebtoken");
 
+// SIGNUP
 authRouter.post("/signup", async (req, res) => {
     const data = {
         name: req.body.username,
@@ -41,6 +42,7 @@ authRouter.post("/signup", async (req, res) => {
     );
 });
 
+// LOGIN
 authRouter.post("/login", async (req, res) => {
     const data = {
         name: req.body.username,

@@ -3,7 +3,7 @@ const notesRouter = express.Router();
 const connection = require("../database");
 const jwt = require("jsonwebtoken");
 
-// DASHBOARD PO LOGINIE
+// DASHBOARD
 notesRouter.get("/", (req, res) => {
   if (!req.headers.authorization) return res.sendStatus(401);
   const [type, token] = req.headers.authorization?.split(" ");
@@ -21,7 +21,7 @@ notesRouter.get("/", (req, res) => {
   );
 });
 
-// POJEDYNCZA NOTATKA
+// SINGLE NOTE
 notesRouter.get("/:id", (req, res) => {
   const noteId = req.params.id;
   const [type, token] = req.headers.authorization?.split(" ");
@@ -41,7 +41,7 @@ notesRouter.get("/:id", (req, res) => {
   );
 });
 
-// TWORZENIE NOTATKI
+// CREATE NOTE
 notesRouter.post("/", (req, res) => {
   const [type, token] = req.headers.authorization?.split(" ");
   const { id } = jwt.decode(token);
@@ -71,7 +71,7 @@ notesRouter.post("/", (req, res) => {
   );
 });
 
-// EDYCJA NOTATKI
+// EDIT NOTE
 notesRouter.put("/:id", (req, res) => {
   const noteId = req.params.id;
   const [type, token] = req.headers.authorization?.split(" ");
@@ -94,7 +94,7 @@ notesRouter.put("/:id", (req, res) => {
   );
 });
 
-// USUWANIE NOTATKI
+// DELETE NOTE
 notesRouter.delete("/:id", (req, res) => {
   const noteId = req.params.id;
   const [type, token] = req.headers.authorization?.split(" ");
