@@ -40,8 +40,7 @@ function NotesPage() {
             {data && (<>
                 <div className="flex justify-between items-center max-w-5xl">
                     <div className="flex items-center gap-3">
-                        <img src="avatar.jpg" className="w-8 rounded-full" />
-                        <p className="text-neutral-50 text-xl">Hello, {}</p>
+                        <<p className="text-neutral-50 text-xl">Notes APP</p>>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl">
