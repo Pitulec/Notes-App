@@ -29,9 +29,6 @@ function NotesPage() {
         return date.toLocaleDateString("en-US", {});
     };
 
-    const note = data?.[0];
-    const createdAt = formatDate(note?.created_at);
-
     useEffect(() => {
         fetchData();
     }, []);
@@ -40,29 +37,28 @@ function NotesPage() {
             {data && (<>
                 <div className="flex justify-between items-center max-w-5xl">
                     <div className="flex items-center gap-3">
-                        <<p className="text-neutral-50 text-xl">Notes APP</p>>
+                        <p className="text-neutral-50 font-bold text-2xl my-8">Notes APP</p>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl">
                     {data.map((note, id) => (
                         <Link
                             href={`/notes/${note.id}`} key={id}
-                            className="flex flex-col gap-3 p-5 rounded-xl w-sm bg-neutral-900 border-1 border-neutral-800"
+                            className="flex flex-col justify-between gap-3 p-5 rounded-xl w-sm bg-neutral-900 border-1 border-neutral-800"
                         >
-                            <h1 className="text-xl font-bold text-neutral-50">
-                                {note.title.length > 50
-                                    ? note.title.slice(0, 50) + "..."
-                                    : note.title}
-                            </h1>
-                            <p className="text-sm text-neutral-400">
-                                {note.content.length > 60
-                                    ? note.content.slice(0, 90) + "..."
-                                    : note.content}
-                            </p>
+                            <div className="flex flex-col gap-3">
+                                <h1 className="text-xl font-bold text-neutral-50">
+                                    {note.title.length > 50 ? note.title.slice(0, 50) + "..." : note.title}
+                                </h1>
+                                <p className="text-sm text-neutral-400">
+                                    {note.content.length > 60 ? note.content.slice(0, 90) + "..." : note.content}
+                                </p>
+                            </div>
                             <span className="text-sm text-neutral-500">
-                                {createdAt}
+                                {formatDate(note.created_at)}
                             </span>
                         </Link>
+
                     ))}
                 </div>
             </>)}
