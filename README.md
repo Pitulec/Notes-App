@@ -85,7 +85,7 @@ A full-stack notes application built with Next.js and Express.js that allows use
    DB_PASSWORD=your-database-password
    DB_NAME=your-database-name
    PORT=3000
-   \`\`\`
+   ```
 
 5. **Start the application**
    ```bash
