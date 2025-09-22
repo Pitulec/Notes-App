@@ -27,27 +27,6 @@ A full-stack notes application built with Next.js and Express.js that allows use
 - **JWT** - Authentication tokens
 - **CORS** - Cross-origin resource sharing
 
-## Project Structure
-
-\`\`\`
-├── app/
-│   ├── notes/
-│   │   ├── [id]/page.jsx          # Individual note page
-│   │   ├── create/page.jsx        # Create new note page
-│   │   └── page.jsx               # Notes listing page
-│   └── page.jsx                   # Home page
-├── components/
-│   ├── note-page.jsx              # Note display/edit component
-│   └── notes-page.jsx             # Notes grid component
-├── server/
-│   ├── routes/
-│   │   ├── auth.js                # Authentication routes
-│   │   └── notes.js               # Notes CRUD routes
-│   ├── database.js                # Database connection
-│   └── server.js                  # Express server setup
-└── README.md
-\`\`\`
-
 ## Installation
 
 ### Prerequisites
@@ -58,25 +37,25 @@ A full-stack notes application built with Next.js and Express.js that allows use
 ### Setup
 
 1. **Clone the repository**
-   \`\`\`bash
+   ```bash
    git clone <repository-url>
    cd notes-app
-   \`\`\`
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
+   ```bash
    # Install frontend dependencies
    npm install
 
    # Install backend dependencies
    cd server
    npm install
-   \`\`\`
+   ```
 
 3. **Database Setup**
    Create a MySQL database and run the following SQL commands:
 
-   \`\`\`sql
+   ```sql
    -- Create users table
    CREATE TABLE users (
    id INT AUTO_INCREMENT PRIMARY KEY,
@@ -95,11 +74,11 @@ A full-stack notes application built with Next.js and Express.js that allows use
    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
    );
-   \`\`\`
+   ```
 
 4. **Environment Variables**
    Create a `.env` file in the server directory:
-   \`\`\`env
+   ```env
    ACCESS_TOKEN=your-jwt-secret-key
    DB_HOST=localhost
    DB_USER=your-database-username
@@ -109,13 +88,13 @@ A full-stack notes application built with Next.js and Express.js that allows use
    \`\`\`
 
 5. **Start the application**
-   \`\`\`bash
+   ```bash
    # Start the backend server (from server directory)
    npm start
 
    # Start the frontend (from root directory)
    npm run dev
-   \`\`\`
+   ```
 
    The frontend will be available at `http://localhost:3001` and the backend at `http://localhost:3000`.
 
@@ -135,7 +114,7 @@ A full-stack notes application built with Next.js and Express.js that allows use
 ### Request/Response Examples
 
 **Login**
-\`\`\`javascript
+```javascript
 POST /auth/login
 {
 "username": "john_doe",
@@ -146,17 +125,17 @@ Response:
 {
 "token": "jwt-token-here"
 }
-\`\`\`
+```
 
 **Create Note**
-\`\`\`javascript
+```javascript
 POST /notes/
 Headers: { Authorization: "Bearer jwt-token" }
 {
 "title": "My First Note",
 "content": "# Hello World\nThis is my first note!"
 }
-\`\`\`
+```
 
 ## Usage
 
