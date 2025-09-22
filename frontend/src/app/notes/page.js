@@ -2,6 +2,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import Link from "next/link";
+import {NotebookPen} from "lucide-react";
 
 function NotesPage() {
     const [data, setData] = useState(null);
@@ -35,10 +36,9 @@ function NotesPage() {
     return (
         <main className="flex flex-col items-center min-h-screen w-screen">
             {data && (<>
-                <div className="flex justify-between items-center max-w-5xl">
-                    <div className="flex items-center gap-3">
-                        <p className="text-neutral-50 font-bold text-2xl my-8">Notes APP</p>
-                    </div>
+                <div className="flex flex-col justify-between items-center my-5 gap-2">
+                        <p className="text-neutral-50 font-bold text-2xl">Notes APP</p>
+                        <Link href="/notes/create" className="flex justify-between gap-3 p-2 rounded-xl bg-neutral-900 border-1 border-neutral-800">Create note <NotebookPen /></Link>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl">
                     {data.map((note, id) => (

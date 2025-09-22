@@ -63,9 +63,8 @@ function NotePage() {
                 <article className="space-y-8">
                     <header className="flex justify-between border-b border-neutral-900 pb-8">
                         <div>
+                            <h1>{note.title}</h1>
                             <p className="text-neutral-400 text-sm">Created: {createdAt}</p>
-                            {createdAt}
-
                         </div>
                         <div className="flex items-center space-x-4 text-neutral-700">
                             <Link href="/notes">
